@@ -110,6 +110,12 @@ public class DatePickerPlugin extends CordovaPlugin {
 								callbackContext.success("cancel");
 							}
 						});
+						timeDialog.setButton(DialogInterface.BUTTON_NEUTRAL, "Clear", new DialogInterface.OnClickListener() {
+							@Override
+							public void onClick(DialogInterface dialog, int which) {
+								callbackContext.success("clear");
+							}
+						});
 						timeDialog.setOnKeyListener(new Dialog.OnKeyListener() {
 							@Override
 							public boolean onKey(DialogInterface dialog, int keyCode, KeyEvent event) {
@@ -120,6 +126,7 @@ public class DatePickerPlugin extends CordovaPlugin {
 						});
 					}
 					timeDialog.show();
+					timeDialog.getButton(DialogInterface.BUTTON_POSITIVE).setText("Set");
 				}
 			};
 
@@ -145,6 +152,12 @@ public class DatePickerPlugin extends CordovaPlugin {
 				            @Override
 				            public void onClick(DialogInterface dialog, int which) {
 								callbackContext.success("cancel");
+				            }
+				        });
+				        dateDialog.setButton(DialogInterface.BUTTON_NEUTRAL, "Clear", new DialogInterface.OnClickListener() {
+				            @Override
+				            public void onClick(DialogInterface dialog, int which) {
+								callbackContext.success("clear");
 				            }
 				        });
 						dateDialog.setOnKeyListener(new Dialog.OnKeyListener() {
@@ -205,6 +218,7 @@ public class DatePickerPlugin extends CordovaPlugin {
 						}
 					}
 					dateDialog.show();
+					dateDialog.getButton(DialogInterface.BUTTON_POSITIVE).setText("Set");
 				}
 			};
 
