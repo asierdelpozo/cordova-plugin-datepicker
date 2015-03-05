@@ -39,14 +39,17 @@ DatePicker.prototype.show = function(options, cb) {
 	//this._callback = cb;
 
 	var callback = function(message) {
-		var timestamp = Date.parse(message);
-		if(isNaN(timestamp) == false) {
-			cb(new Date(message));
+		if (message == "clear" || message == "cancel") {
+			cb(message);
+		} else {
+			var timestamp = Date.parse(message);
+			if (isNaN(timestamp) == false) {
+				cb(new Date(message));
+			} else {
+				cb();
+			}
 		}
-        else {
-            cb();
-        }
-	}
+	};
 
 	cordova.exec(callback,
 		null,
